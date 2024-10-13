@@ -5,12 +5,16 @@ from keras.applications.densenet import DenseNet201
 from keras.models import Model, load_model
 from keras.preprocessing.sequence import pad_sequences
 import pickle
+from joblib import load
 
 # Load the pre-trained model and tokenizer
 caption_model = load_model(r"saved_model.keras")
 
-with open(r"tokenizer_2.pkl", 'rb') as f:
-    tokenizer = pickle.load(f)
+# with open(r"tokenizer_2.pkl", 'rb') as f:
+#     tokenizer = pickle.load(f)
+
+# Load the tokenizer
+tokenizer = load(r"tokenizer_2.pkl")
 
 max_length = 35  # Define your max_length here
 
